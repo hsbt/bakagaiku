@@ -1,0 +1,26 @@
+<h1>バカが征く on Rails</h1>
+<p>
+ <%= link_to "過去ログ", {:controller => 'entry', :action => "list"} %>
+ 検索
+ <%= link_to("RSS", {:controller => 'entry', :action => "rss"}) %>
+ <a href="<%= BakaUrl %>">本家</a>
+</p>
+<p>--</p>
+<ul>
+
+<% @entries.each do |entry| %>
+<li>
+ <%= entry.month %>月<%= entry.day %>日…
+ <%= link_to(entry.title, {:action => "view", :id => entry.bakaid}) %>
+</li>
+<% end %>
+</ul>
+
+<p><%= link_to(">>もっと読む", {:action => "list"}) %></p>
+<%= render_partial "month_link" %>
+<% unless @entries.empty? %>
+<pre>
+<%= @entries.empty? ? '' : @entries.first.text %></pre>
+<p>bakaid:<%= link_to(@entries.first.bakaid, {:action => "view", :id => @entries.first.bakaid}) %></p>
+<% end %>
+</ul>

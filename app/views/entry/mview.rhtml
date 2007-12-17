@@ -1,0 +1,10 @@
+<% @sub_title = params[:id] %>
+<%= render_partial "month_link" %>
+<%= link_to("ホーム", :controller => "") %>
+<% @entries.each do |entry| %>
+<hr>
+<% name = "#{entry.year}年#{entry.month}月#{entry.day}日#{entry.number}" %>
+<p><%= link_to(name, {:action => "view", :id => entry.bakaid}) %></p>
+<pre><%= entry.text %></pre>
+<p><a href="http://<%= BakaAddress + BakaPath + entry.bakaid %>">本家Permlink</a></p>
+<% end %>

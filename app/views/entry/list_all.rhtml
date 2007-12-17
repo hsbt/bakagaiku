@@ -1,0 +1,5 @@
+<p><%= link_to("最新", :controller => "") %></p>
+<ul>
+<% @entries.each do |entry| %><li><%= entry.month %>月<%= entry.day %>日… <%= link_to(entry.title, {:action => "view", :id => entry}) %></li>
+<% end %>
+</ul>

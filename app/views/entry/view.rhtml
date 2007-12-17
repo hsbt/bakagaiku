@@ -1,0 +1,12 @@
+<% @sub_title = sprintf('%02d年%02d月%02d日', @entry.year.to_i, @entry.month.to_i, @entry.day.to_i) + (@entry.number ? "(#{@entry.number})" : "") %>
+<p><%= @pre_entry ? link_to("<< 前", {:action => "view", :id => @pre_entry.bakaid}) : '' %>
+<%= link_to("ホーム", {:action => ""}) %>
+<%= @next_entry ? link_to("次 >>", {:action => "view", :id => @next_entry.bakaid}) : '' %></p>
+
+<p>bakaid:<%= @entry.bakaid %></p>
+<pre><%= @entry.text %></pre>
+<p><a href="http://<%= BakaAddress + BakaPath + @entry.bakaid %>">本家Permlink</a></p>
+
+<p><%= @pre_entry ? link_to("<< 前", {:action => "view", :id => @pre_entry.bakaid}) : '' %>
+<%= link_to("ホーム", {:action => ""}) %>
+<%= @next_entry ? link_to("次", {:action => "view", :id => @next_entry.bakaid}) : '' %></p>
