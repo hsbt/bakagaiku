@@ -50,6 +50,10 @@ end
 #   inflect.uncountable %w( fish sheep )
 # end
 
+# patch for the vulnerability
+# see http://www.ruby-lang.org/ja/news/2008/08/23/dos-vulnerability-in-rexml/
+require "rexml-expansion-fix"
+
 # Include your application configuration below
 $KCODE = 'utf8' 
 BakaAddress = 'www.jitu.org'
