@@ -1,8 +1,28 @@
 class EntryController < ApplicationController
    caches_page :index
+	session :off
 
    def index
       @entries = Entry.find :all, :order => "bakaid DESC", :limit => 5
+   end
+
+   def list
+     @pages, @entries = paginate(:entry, :per_page => 30, :order_by => 'bakaid DESC')
+     @begin_idx = @pages.items_per_page * @pages.current.previous.to_i
+     @end_idx = @pages.current.next ? @pages.items_per_page * (@pages.current.next.to_i - 1) : 
+               @entries.size + @pages.items_per_page * @pages.current.previous.to_i
+   end
+
+   def view
+      @entry      = Entry.find(:first, :conditions => ['bakaid = ?', @params[:id]])
+      @pre_entry  = Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i - 1])
+      @next_entry = Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i + 1])
+   end
+
+   def mview
+      @bakaid = @params[:id]
+      @bakaid = '' if @bakaid.size < 6
+      @entries = Entry.find_by_sql ['select * from entries where bakaid like ?', "#{@bakaid}%"]
    end
 
    def rss
@@ -42,23 +62,5 @@ class EntryController < ApplicationController
       lines = str.gsub(/<.+?>/, '').split(/\n/)
       lines[0].concat('...') if lines[0] and lines[1]
       lines[0]
-   end
-   def list
-     @pages, @entries = paginate(:entry, :per_page => 30, :order_by => 'bakaid DESC')
-     @begin_idx = @pages.items_per_page * @pages.current.previous.to_i
-     @end_idx = @pages.current.next ? @pages.items_per_page * (@pages.current.next.to_i - 1) : 
-               @entries.size + @pages.items_per_page * @pages.current.previous.to_i
-   end
-
-   def view
-      @entry      = Entry.find(:first, :conditions => ['bakaid = ?', @params[:id]])
-      @pre_entry  = Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i - 1])
-      @next_entry = Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i + 1])
-   end
-
-   def mview
-      @bakaid = @params[:id]
-      @bakaid = '' if @bakaid.size < 6
-      @entries = Entry.find_by_sql ['select * from entries where bakaid like ?', "#{@bakaid}%"]
    end
 end
