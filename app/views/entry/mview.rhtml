@@ -1,10 +1,10 @@
 <% @sub_title = params[:id] %>
 <%= render_partial "month_link" %>
-<%= link_to("¥Û¡¼¥à", :controller => "") %>
+<%= link_to("ãƒ›ãƒ¼ãƒ ", :controller => "") %>
 <% @entries.each do |entry| %>
 <hr>
-<% name = "#{entry.year}Ç¯#{entry.month}·î#{entry.day}Æü#{entry.number}" %>
+<% name = "#{entry.year}å¹´#{entry.month}æœˆ#{entry.day}æ—¥#{entry.number}" %>
 <p><%= link_to(name, {:action => "view", :id => entry.bakaid}) %></p>
 <pre><%= entry.text %></pre>
-<p><a href="http://<%= BakaAddress + BakaPath + entry.bakaid %>">ËÜ²ÈPermlink</a></p>
+<p><a href="http://<%= BakaAddress + BakaPath + entry.bakaid %>">æœ¬å®¶Permlink</a></p>
 <% end %>

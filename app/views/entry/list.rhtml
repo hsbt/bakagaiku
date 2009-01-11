@@ -1,8 +1,8 @@
-<p><%= link_to("¥Û¡¼¥à", :controller => "") %></p>
+<p><%= link_to("ãƒ›ãƒ¼ãƒ ", :controller => "") %></p>
 <ul>
-<% @entries.each do |entry| %><li><%= entry.month %>·î<%= entry.day %>Æü¡Ä <%= link_to(entry.title, {:action => "view", :id => entry.bakaid}) %></li>
+<% @entries.each do |entry| %><li><%= entry.month %>æœˆ<%= entry.day %>æ—¥â€¦ <%= link_to(entry.title, {:action => "view", :id => entry.bakaid}) %></li>
 <% end %>
 </ul>
-<%= link_to "Á°¤òÉ½¼¨", { :page => @pages.current.previous } if @pages.current.previous %>
-<%= "#{@begin_idx + 1}·ï¡Á#{@end_idx}·ï¤òÉ½¼¨" %>
-<%= link_to "¼¡¤òÉ½¼¨", { :page => @pages.current.next } if @pages.current.next %>
+<%= link_to "å‰ã‚’è¡¨ç¤º", { :page => @pages.current.previous } if @pages.current.previous %>
+<%= "#{@begin_idx + 1}ä»¶ã€œ#{@end_idx}ä»¶ã‚’è¡¨ç¤º" %>
+<%= link_to "æ¬¡ã‚’è¡¨ç¤º", { :page => @pages.current.next } if @pages.current.next %>
