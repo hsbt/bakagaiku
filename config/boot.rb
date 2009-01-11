@@ -22,7 +22,8 @@ unless defined?(Rails::Initializer)
     rails_gem_version = $1
 
     if version = defined?(RAILS_GEM_VERSION) ? RAILS_GEM_VERSION : rails_gem_version
-      rails_gem = Gem.cache.search('rails', "=#{version}").first
+		 rails_gem = Gem.cache.search(Gem::Dependency.new('rails', "~>#{rails_gem_version}.0")).sort_by { |g| g.version.version }.last
+#      rails_gem = Gem.cache.search('rails', "=#{version}").first
 
       if rails_gem
         gem "rails", "=#{version}"
