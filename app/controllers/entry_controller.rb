@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class EntryController < ApplicationController
    caches_page :index
 	session :off
@@ -7,10 +8,7 @@ class EntryController < ApplicationController
    end
 
    def list
-     @pages, @entries = paginate(:entry, :per_page => 30, :order_by => 'bakaid DESC')
-     @begin_idx = @pages.items_per_page * @pages.current.previous.to_i
-     @end_idx = @pages.current.next ? @pages.items_per_page * (@pages.current.next.to_i - 1) : 
-               @entries.size + @pages.items_per_page * @pages.current.previous.to_i
+		@entries = Entry.paginate(:page => params[:page], :per_page => 30, :order => 'bakaid DESC')
    end
 
    def view

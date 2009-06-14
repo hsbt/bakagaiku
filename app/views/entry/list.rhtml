@@ -3,6 +3,4 @@
 <% @entries.each do |entry| %><li><%= entry.month %>月<%= entry.day %>日… <%= link_to(entry.title, {:action => "view", :id => entry.bakaid}) %></li>
 <% end %>
 </ul>
-<%= link_to "前を表示", { :page => @pages.current.previous } if @pages.current.previous %>
-<%= "#{@begin_idx + 1}件〜#{@end_idx}件を表示" %>
-<%= link_to "次を表示", { :page => @pages.current.next } if @pages.current.next %>
+<%= will_paginate @entries, :prev_label => '前を表示', :next_label => '次を表示' %>

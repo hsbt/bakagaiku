@@ -61,6 +61,9 @@ end
 # see http://www.ruby-lang.org/ja/news/2008/08/23/dos-vulnerability-in-rexml/
 require "rexml-expansion-fix"
 
+# require additional plugin.	
+require "will_paginate"
+
 # Include your application configuration below
 $KCODE = 'utf8' 
 BakaAddress = 'www.jitu.org'
