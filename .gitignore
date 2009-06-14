@@ -1,2 +1,4 @@
 log/
-*.log
+public/index.html
+public/entry.html
+db/schema.rb
