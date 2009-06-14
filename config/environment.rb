@@ -11,34 +11,41 @@ RAILS_GEM_VERSION = '2.3.2'
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  # Settings in config/environments/* take precedence those specified here
-  
-  # Skip frameworks you're not going to use (only works if using vendor/rails)
-  # config.frameworks -= [ :action_web_service, :action_mailer ]
+	# Settings in config/environments/* take precedence those specified here
 
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
+	# Skip frameworks you're not going to use (only works if using vendor/rails)
+	# config.frameworks -= [ :action_web_service, :action_mailer ]
 
-  # Force all environments to use the same logger level 
-  # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
+	# Add additional load paths for your own custom dirs
+	# config.load_paths += %W( #{RAILS_ROOT}/extras )
 
-  # Use the database for sessions instead of the file system
-  # (create the session table with 'rake db:sessions:create')
-  # config.action_controller.session_store = :active_record_store
+	# Force all environments to use the same logger level
+	# (by default production uses :info, the others :debug)
+	# config.log_level = :debug
 
-  # Use SQL instead of Active Record's schema dumper when creating the test database.
-  # This is necessary if your schema can't be completely dumped by the schema dumper, 
-  # like if you have constraints or database-specific column types
-  # config.active_record.schema_format = :sql
+	# Use the database for sessions instead of the file system
+	# (create the session table with 'rake db:sessions:create')
+	# config.action_controller.session_store = :active_record_store
 
-  # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector
+	# Use SQL instead of Active Record's schema dumper when creating the test database.
+	# This is necessary if your schema can't be completely dumped by the schema dumper,
+	# like if you have constraints or database-specific column types
+	# config.active_record.schema_format = :sql
 
-  # Make Active Record use UTC-base instead of local time
-  # config.active_record.default_timezone = :utc
-  
-  # See Rails::Configuration for more options
+	# Activate observers that should always be running
+	# config.active_record.observers = :cacher, :garbage_collector
+
+	# Make Active Record use UTC-base instead of local time
+	# config.active_record.default_timezone = :utc
+
+	# See Rails::Configuration for more options
+	characters = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
+	secret = Array.new(48){characters[rand(characters.size)]}.join
+
+	config.action_controller.session = {
+		:session_key => "_bakagaiku_session",
+		:secret => secret
+	}
 end
 
 # Add new inflection rules using the following format 
