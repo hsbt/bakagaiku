@@ -17,7 +17,7 @@
 </ul>
 
 <p><%= link_to(">>もっと読む", {:action => "list"}) %></p>
-<%= render_partial "month_link" %>
+<%= render :partial => "month_link" %>
 <% unless @entries.empty? %>
 <pre>
 <%= @entries.empty? ? '' : @entries.first.text %></pre>

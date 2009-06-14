@@ -1,5 +1,5 @@
 <% @sub_title = params[:id] %>
-<%= render_partial "month_link" %>
+<%= render :partial => "month_link" %>
 <%= link_to("ホーム", :controller => "") %>
 <% @entries.each do |entry| %>
 <hr>
