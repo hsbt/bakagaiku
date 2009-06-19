@@ -46,7 +46,6 @@ class EntryController < ApplicationController
 			maker.items.max_size = 10
 		end
 
-		@headers["Content-Type"] = 'application/xml; charset=UTF-8'
 		begin
 			rss.output_encoding = "UTF-8"
 		rescue RSS::UnknownConversionMethodError
