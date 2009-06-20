@@ -1,4 +1,6 @@
-log/
+log
 public/index.html
 public/entry.html
+public/entry/
 db/schema.rb
+tmp
