@@ -9,7 +9,7 @@ development: &default
     - 6
     - 20
   waiting_time: 300
-  max_fetch_entries: 1000
+  max_fetch_entries: 365
 
 test:
   <<: *default

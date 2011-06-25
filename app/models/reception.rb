@@ -30,7 +30,7 @@ class Reception < ActiveRecord::Base
     entry
   end
 
-  def wget_new_entries(max = 10)
+  def wget_new_entries(max)
     if last_entry = Entry.order("bakaid DESC").limit(1).first
       last_entry.bakaid =~ /^(\d\d\d\d)(\d\d)(\d\d)/
       first_year, first_month, first_day = $1.to_i, $2.to_i, $3.to_i
@@ -62,9 +62,9 @@ class Reception < ActiveRecord::Base
   end
 
   class << self
-    def fetch_bakagaiku!
+    def fetch_bakagaiku!(max = configatron.max_fetch_entries)
       @reception = Reception.create
-      @reception.wget_new_entries(configatron.max_fetch_entries)
+      @reception.wget_new_entries(max)
       if last_reception = Reception.order('id DESC').limit(1).first
         @reception.destroy if 0 == @reception.entries.count
         last_reception.reload_last_entry
