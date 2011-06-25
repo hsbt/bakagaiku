@@ -25,6 +25,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-group :prdocution do
+group :production do
   gem 'pg'
+  gem 'therubyracer-heroku'
 end
