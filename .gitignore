@@ -1,6 +1,5 @@
-log
-public/index.html
-public/entry.html
-public/entry/
-db/schema.rb
-tmp
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
