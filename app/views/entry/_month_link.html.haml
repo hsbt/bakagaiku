@@ -1,0 +1,9 @@
+%p
+  - t = Time.now; (configatron.beginning_date[0]..2100).each do |y|
+    - break if y > t.year
+    = y
+    - (1..12).each do |m|
+      - next if y == configatron.beginning_date[0] && m < configatron.beginning_date[1]
+      - break if y == t.year && m > t.mon
+      = link_to("#{m}", {:action => "mview", :id => sprintf("%04d%02d", y, m)})
+    %br

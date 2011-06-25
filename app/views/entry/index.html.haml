@@ -1,0 +1,21 @@
+%h1 バカが征く on Rails
+%p
+  = link_to "過去ログ", {:controller => 'entry', :action => "list"}
+  \#{link_to("RSS", feed_entry_index_path(:format => :rss))}
+  %a{:href => configatron.baka.url} 本家
+
+%p --
+
+%ul
+  - @entries.each do |entry|
+    %li!= "#{entry.month}月#{entry.day}日… #{link_to entry.title, entry_path(entry.bakaid)}"
+
+%p= link_to(">>もっと読む", list_entry_index_path)
+
+= render :partial => "month_link"
+- unless @entries.empty?
+  - f = @entries.first
+  %pre
+    != f.text
+  %p
+    bakaid: #{link_to(f.bakaid, entry_path(f.bakaid))}

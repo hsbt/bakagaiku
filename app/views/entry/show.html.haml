@@ -1,0 +1,14 @@
+- @sub_title = sprintf('%02d年%02d月%02d日', @entry.year.to_i, @entry.month.to_i, @entry.day.to_i) + (@entry.number ? "(#{@entry.number})" : "")
+%p
+  = @pre_entry ? link_to("<< 前", entry_path(@pre_entry.bakaid)) : ''
+  = link_to("ホーム", root_path)
+  = @next_entry ? link_to("次 >>", entry_path(@next_entry.bakaid)) : ''
+%p
+  bakaid: #{@entry.bakaid}
+%pre!= @entry.text
+%p
+  %a{:href => "http://#{configatron.baka.address + configatron.baka.path + @entry.bakaid}"} 本家Permlink
+%p
+  = @pre_entry ? link_to("<< 前", entry_path(@pre_entry.bakaid)) : ''
+  = link_to("ホーム", root_path)
+  = @next_entry ? link_to("次 >>", entry_path(@next_entry.bakaid)) : ''

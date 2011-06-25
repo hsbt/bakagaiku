@@ -7,8 +7,9 @@ gem 'jquery-rails'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
 gem 'uglifier'
-
+gem 'sprockets', '= 2.0.0.beta.10'
 gem 'configatron'
+gem 'kaminari'
 
 group :development do
   gem 'thin'

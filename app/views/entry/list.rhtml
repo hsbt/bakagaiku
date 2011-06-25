@@ -1,6 +1,0 @@
-<p><%= link_to("ホーム", :controller => "") %></p>
-<ul>
-<% @entries.each do |entry| %><li><%= entry.month %>月<%= entry.day %>日… <%= link_to(entry.title, {:action => "view", :id => entry.bakaid}) %></li>
-<% end %>
-</ul>
-<%= will_paginate @entries, :prev_label => '前を表示', :next_label => '次を表示' %>

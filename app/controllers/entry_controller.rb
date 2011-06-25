@@ -1,59 +1,35 @@
 # -*- coding: utf-8 -*-
-class EntryController < ApplicationController
-	caches_page :index
-	session :off
 
+class EntryController < ApplicationController
 	def index
-		@entries = Entry.find :all, :order => "bakaid DESC", :limit => 5
+		@entries = Entry.order("bakaid DESC").limit(5)
 	end
 
 	def list
-		@entries = Entry.paginate(:page => params[:page], :per_page => 30, :order => 'bakaid DESC')
+		@entries = Entry.order("bakaid DESC").page(params[:page])
 	end
 
-	def view
-		@entry		= Entry.find(:first, :conditions => ['bakaid = ?', @params[:id]])
-		@pre_entry	= Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i - 1])
-		@next_entry = Entry.find(:first, :conditions => ['id = ?', @entry.id.to_i + 1])
+	def show
+		@entry = Entry.where(:bakaid => params[:id]).limit(1).first
+		@pre_entry	= @entry.pre_entry
+		@next_entry = @entry.next_entry
 	end
 
 	def mview
-		@bakaid = @params[:id]
+		@bakaid = params[:id]
 		@bakaid = '' if @bakaid.size < 6
 		@entries = Entry.find_by_sql ['select * from entries where bakaid like ?', "#{@bakaid}%"]
 	end
 
-	def rss
-		require 'rss/maker'
- 
-		@entries = Entry.find :all, :order => "bakaid DESC", :limit => 10
- 
-		rss = RSS::Maker.make("1.0") do |maker|
-			@entries.each do |entry|
-				item	= maker.items.new_item
-				item.date				= Time.parse(entry.year + entry.month + entry.day)
-				item.link				= url_for(:controller => 'entry', :action => 'view', :id => entry.bakaid)
-				item.title				= entry.title.to_s
-				item.description		= shorten(entry.text.to_s)
-				item.content_encoded = "<pre>" + entry.text.to_s + "</pre>"
-			end
+	def feed
+    @entries = Entry.order("bakaid DESC").limit(5)
 
-			maker.channel.link  = url_for
-			maker.channel.about = url_for
-			maker.channel.title = "バカが征く on Rails"
-			maker.channel.description = "バカが征く on Rails"
-			maker.items.do_sort = true
-			maker.items.max_size = 10
-		end
+    respond_to do |format|
+      format.rss { render :layout => nil }
+    end
+  end
 
-		begin
-			rss.output_encoding = "UTF-8"
-		rescue RSS::UnknownConversionMethodError
-		end
-
-		self.class.cache_page render_to_string(:text => rss, :layout => false), '/entry/rss.xml'
-		render :text => rss, :layout => false
-	end
+  private
 
 	def shorten(str, len = 120)
 		lines = str.gsub(/<.+?>/, '').split(/\n/)

@@ -1,4 +1,4 @@
-desc 'fetch latest bakagaiku'
-task :fetch_bakagaiku do
+desc 'cron job'
+task :cron => :environment do
   Reception.fetch_bakagaiku!
 end

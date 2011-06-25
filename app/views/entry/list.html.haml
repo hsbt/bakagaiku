@@ -1,0 +1,7 @@
+%p= link_to("ホーム", root_path)
+
+%ul
+  - @entries.each do |entry|
+    %li!= "#{entry.month}月#{entry.day}日… #{link_to(entry.title, entry_path(entry.bakaid))}"
+
+= paginate(@entries)
