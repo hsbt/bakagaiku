@@ -1,0 +1,15 @@
+development: &default
+  baka:
+    address: 'www.jitu.org'
+    port: 80
+    path: '/~tko/cgi-bin/bakagaiku.rb?bakaid='
+    url: 'http://www.jitu.org/~tko/cgi-bin/bakagaiku.rb'
+  beginning_date: '2005-6-20'
+  waiting_time: 300
+  max_fetch_entries: 20
+
+test:
+  <<: *default
+
+production:
+  <<: *default

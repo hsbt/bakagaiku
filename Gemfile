@@ -8,6 +8,8 @@ gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
 gem 'uglifier'
 
+gem 'configatron'
+
 group :development do
   gem 'thin'
   gem 'heroku_san'

@@ -4,8 +4,8 @@ class Reception < ActiveRecord::Base
   def wget_entry(bakaid)
     require 'net/http'
     Net::HTTP.version_1_2
-    Net::HTTP.start(BakaAddress, BakaPort) do |http|
-      path = BakaPath + bakaid
+    Net::HTTP.start(configatron.baka.address, configatron.baka.port) do |http|
+      path = configatron.baka.path + bakaid
       http.request_get( path )
     end
   end
@@ -17,16 +17,17 @@ class Reception < ActiveRecord::Base
   end
 
   def create_or_update_entry(bakaid)
+    require 'nkf'
     print bakaid
     response = wget_entry(bakaid)
     puts " => #{response.code}"
     return nil unless response.code == "200"
-    entry = Entry.find(:first, :conditions => ['bakaid = ?', bakaid])
+    entry = Entry.where(:bakaid => bakaid).first
     if entry
       entry.body = NKF.nkf('-Ew',response.body)
       entry.save
     else
-      entry = entries.create :bakaid => bakaid, :body => NKF.nkf('-Ew',response.body)
+      entry = entries.create :bakaid => bakaid, :body => NKF.nkf('-Ew', response.body)
     end
     entry
   end
@@ -36,7 +37,7 @@ class Reception < ActiveRecord::Base
       last_entry.bakaid =~ /^(\d\d\d\d)(\d\d)(\d\d)/
       first_year, first_month, first_day = $1.to_i, $2.to_i, $3.to_i
     else
-      first_year, first_month, first_day = BeginningDate
+      first_year, first_month, first_day = configatron.beginning_date.split('-').map(&:to_i)
     end
     t = Time.now
     last_year, last_month, last_day = t.year, t.mon, t.day
@@ -58,6 +59,17 @@ class Reception < ActiveRecord::Base
             break unless create_or_update_entry(bakaid)
           end
         end
+      end
+    end
+  end
+
+  class << self
+    def fetch_bakagaiku!
+      @reception = Reception.create!
+      @reception.wget_new_entries(configatron.max_fetch_entries)
+      if last_reception = Reception.find(:first, :order => "id DESC")
+        @reception.destroy if 0 == @reception.entries.count
+        last_reception.reload_last_entry
       end
     end
   end
