@@ -2,11 +2,11 @@
 
 class EntryController < ApplicationController
 	def index
-		@entries = Entry.order("bakaid DESC").limit(5)
+		@entries = Entry.limit(5)
 	end
 
 	def list
-		@entries = Entry.order("bakaid DESC").page(params[:page])
+		@entries = Entry.page(params[:page])
 	end
 
 	def show
@@ -22,18 +22,10 @@ class EntryController < ApplicationController
 	end
 
 	def feed
-    @entries = Entry.order("bakaid DESC").limit(5)
+    @entries = Entry.limit(5)
 
     respond_to do |format|
       format.rss { render :layout => nil }
     end
   end
-
-  private
-
-	def shorten(str, len = 120)
-		lines = str.gsub(/<.+?>/, '').split(/\n/)
-		lines[0].concat('...') if lines[0] and lines[1]
-		lines[0]
-	end
 end

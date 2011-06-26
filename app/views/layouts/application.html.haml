@@ -1,14 +1,13 @@
 !!!
 %html
   %head
-    %title
-      バカが征く on Rails #{@sub_title}
+    %title バカが征く on Rails #{@sub_title}
     = stylesheet_link_tag    :application
     = javascript_include_tag :application
     = auto_discovery_link_tag :rss, feed_entry_index_path(:format => :rss)
     = csrf_meta_tags
   %body
     = yield
-    %hr/
+    %hr
     %p Copyright &copy; 1905 tko at jitu.org
-    %p= link_to("バカが征く on Rails", {:controller => "entry"})
+    %p= link_to "バカが征く on Rails", "https://github.com/hsbt/bakagaiku"

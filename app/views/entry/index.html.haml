@@ -1,21 +1,22 @@
 %h1 バカが征く on Rails
 %p
-  = link_to "過去ログ", {:controller => 'entry', :action => "list"}
-  \#{link_to("RSS", feed_entry_index_path(:format => :rss))}
-  %a{:href => configatron.baka.url} 本家
-
-%p --
-
-%ul
-  - @entries.each do |entry|
-    %li!= "#{entry.month}月#{entry.day}日… #{link_to entry.title, entry_path(entry.bakaid)}"
-
-%p= link_to(">>もっと読む", list_entry_index_path)
+  = link_to "過去ログ", list_entry_index_path
+  = link_to "RSS", feed_entry_index_path(:format => :rss)
+  = link_to "本家", configatron.baka.url
 
 = render :partial => "month_link"
-- unless @entries.empty?
+
+- if @entries.present?
+  %p --
+  %p 最近の5件
+  %ul
+    - @entries.each do |entry|
+      %li!= "#{entry.year}年#{entry.month}月#{entry.day}日… #{link_to entry.title, entry_path(entry.bakaid)}"
+  %p --
   - f = @entries.first
+  %p
+    bakaid: #{link_to(f.bakaid, entry_path(f.bakaid))}
   %pre
     != f.text
   %p
-    bakaid: #{link_to(f.bakaid, entry_path(f.bakaid))}
+    %a{:href => "http://#{configatron.baka.address + configatron.baka.path + f.bakaid}"} 本家Permlink
