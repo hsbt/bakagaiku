@@ -17,7 +17,7 @@ group :assets do
 end
 
 group :development do
-  gem 'thin'
+  gem 'foreman'
   gem 'heroku_san'
 end
 
@@ -33,5 +33,4 @@ end
 
 group :production do
   gem 'pg'
-  gem 'therubyracer-heroku'
 end
