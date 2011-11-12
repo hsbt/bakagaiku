@@ -2,6 +2,6 @@
 
 %ul
   - @entries.each do |entry|
-    %li!= "#{entry.month}月#{entry.day}日… #{link_to(entry.title, entry_path(entry.bakaid))}"
+    %li!= "#{entry.year}年#{entry.month}月#{entry.day}日… #{link_to(entry.title, entry_path(entry.bakaid))}"
 
 = paginate(@entries)
