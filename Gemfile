@@ -1,7 +1,6 @@
 source :rubygems
 
-gem 'rails', '~> 3.1.0'
-gem 'rake', '~> 0.8.7'
+gem 'rails', '~> 3.2.0.rc1'
 gem 'unicorn'
 
 gem 'haml-rails'
@@ -11,8 +10,8 @@ gem 'configatron'
 gem 'kaminari'
 
 group :assets do
-  gem 'sass-rails', '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 

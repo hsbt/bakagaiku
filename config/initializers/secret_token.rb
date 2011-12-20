@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Bakagaiku::Application.config.secret_token = '63a1c508185ba13f7fb73f2246f78ef389a9adea600cc43a541f7fbce8b006e22b629313da87cdc551f936dee1aff627067ded6a97354b3359edd452f0907475'
+Bakagaiku::Application.config.secret_token = '6b1e5d62ea5c7521e4b1746f23163be1b6fb6eb98440a97306dd8c23f62a44f3649cf19d96dbe89fcb9a86fdb388e55381ad1e449beffbb8e5ece1cc6fd3bd89'
