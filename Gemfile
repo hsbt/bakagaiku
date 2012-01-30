@@ -1,8 +1,6 @@
 source :rubygems
 
 gem 'rails', '~> 3.2.0'
-gem 'unicorn'
-
 gem 'haml-rails'
 gem 'jquery-rails'
 
@@ -32,5 +30,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'thin'
+  gem 'rack-fiber_pool', require: 'rack/fiber_pool'
   gem 'newrelic_rpm'
 end
