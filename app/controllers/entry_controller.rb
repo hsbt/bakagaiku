@@ -14,9 +14,8 @@ class EntryController < ApplicationController
   end
 
   def mview
-    @bakaid = params[:id]
-    @bakaid = '' if @bakaid.size < 6
-    @entries = Entry.find_by_sql ['select * from entries where bakaid like ?', "#{@bakaid}%"]
+    @bakaid = params[:id].size < 6 ? '' : params[:id]
+    @entries = Entry.where('bakaid like ?', "#{@bakaid}%")
   end
 
   def feed
