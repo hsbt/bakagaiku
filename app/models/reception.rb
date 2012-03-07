@@ -2,6 +2,14 @@ class Reception < ActiveRecord::Base
   has_many :entries
   default_scope order: 'id DESC'
 
+  class << self
+    def fetch_bakagaiku!(max = configatron.max_fetch_entries)
+      reception = Reception.create!
+      reception.wget_new_entries(max)
+      reception.destroy if reception.entries.count.zero?
+    end
+  end
+
   def wget_new_entries(max)
     if last_entry = Entry.limit(1).first
       last_entry.bakaid =~ /^(\d\d\d\d)(\d\d)(\d\d)/
@@ -54,13 +62,5 @@ class Reception < ActiveRecord::Base
       entry = entries.create!(bakaid: bakaid, body: NKF.nkf('-Ew', response.body))
     end
     entry
-  end
-
-  class << self
-    def fetch_bakagaiku!(max = configatron.max_fetch_entries)
-      reception = Reception.create!
-      reception.wget_new_entries(max)
-      reception.destroy if reception.entries.count.zero?
-    end
   end
 end
