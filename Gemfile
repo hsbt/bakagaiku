@@ -15,6 +15,7 @@ end
 
 group :development do
   gem 'foreman'
+  gem 'pry-rails'
   gem 'sqlite3'
   gem 'heroku_san'
 end
