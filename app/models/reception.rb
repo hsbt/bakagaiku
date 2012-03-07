@@ -4,7 +4,7 @@ class Reception < ActiveRecord::Base
 
   class << self
     def fetch_bakagaiku!(max = configatron.max_fetch_entries)
-      reception = Reception.create!
+      reception = create!
       reception.wget_new_entries(max)
       reception.destroy if reception.entries.count.zero?
     end
