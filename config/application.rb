@@ -2,7 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require "active_record/railtie"
 require "action_controller/railtie"
-require "action_mailer/railtie"
 require "active_resource/railtie"
 
 if defined?(Bundler)
@@ -58,9 +57,5 @@ module Bakagaiku
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    config.generators do |g|
-      g.test_framework :rspec, :fixture => true, :view_specs => false, :routing_specs => false
-    end
   end
 end
