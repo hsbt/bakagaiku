@@ -15,17 +15,8 @@ end
 
 group :development do
   gem 'foreman'
-  gem 'heroku_san'
-end
-
-group :test do
-  gem 'capybara'
-end
-
-group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'therubyracer'
+  gem 'heroku_san'
 end
 
 group :production do
