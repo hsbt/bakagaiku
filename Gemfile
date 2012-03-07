@@ -3,8 +3,7 @@ source :rubygems
 gem 'rails', '~> 3.2.2'
 gem 'haml-rails'
 gem 'jquery-rails'
-
-gem 'configatron'
+gem 'settingslogic'
 gem 'kaminari'
 
 group :assets do
@@ -14,10 +13,9 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'foreman'
   gem 'pry-rails'
-  gem 'sqlite3'
-  gem 'heroku_san'
 end
 
 group :production do

@@ -2,7 +2,7 @@
 %p
   = link_to "過去ログ", list_entry_index_path
   = link_to "RSS", feed_entry_index_path(:format => :rss)
-  = link_to "本家", configatron.baka.url
+  = link_to "本家", Settings.baka.url
 
 = render :partial => "month_link"
 
@@ -19,4 +19,4 @@
   %pre
     != f.text
   %p
-    %a{:href => "http://#{configatron.baka.address + configatron.baka.path + f.bakaid}"} 本家Permlink
+    %a{:href => "http://#{Settings.baka.address + Settings.baka.path + f.bakaid}"} 本家Permlink

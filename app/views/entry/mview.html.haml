@@ -8,4 +8,4 @@
   %p= link_to("#{entry.year}年#{entry.month}月#{entry.day}日#{entry.number}", entry_path(entry.bakaid))
   %pre!= entry.text
   %p
-    %a{:href => "http://#{configatron.baka.address + configatron.baka.path + entry.bakaid}"} 本家Permlink
+    %a{:href => "http://#{Settings.baka.address + Settings.baka.path + entry.bakaid}"} 本家Permlink

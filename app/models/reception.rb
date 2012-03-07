@@ -3,7 +3,7 @@ class Reception < ActiveRecord::Base
   default_scope order: 'id DESC'
 
   class << self
-    def fetch_bakagaiku!(max = configatron.max_fetch_entries)
+    def fetch_bakagaiku!(max = Settings.max_fetch_entries)
       reception = create!
       reception.wget_new_entries(max)
       reception.destroy if reception.entries.count.zero?
@@ -15,7 +15,7 @@ class Reception < ActiveRecord::Base
       last_entry.bakaid =~ /^(\d\d\d\d)(\d\d)(\d\d)/
       first_year, first_month, first_day = $1.to_i, $2.to_i, $3.to_i
     else
-      first_year, first_month, first_day = configatron.beginning_date
+      first_year, first_month, first_day = Settings.beginning_date
     end
     t = Time.now
     last_year, last_month, last_day = t.year, t.mon, t.day
@@ -46,8 +46,8 @@ class Reception < ActiveRecord::Base
   def wget_entry(bakaid)
     require 'net/http'
     Net::HTTP.version_1_2
-    Net::HTTP.start(configatron.baka.address, configatron.baka.port) do |http|
-      http.request_get( configatron.baka.path + bakaid )
+    Net::HTTP.start(Settings.baka.address, Settings.baka.port) do |http|
+      http.request_get( Settings.baka.path + bakaid )
     end
   end
 

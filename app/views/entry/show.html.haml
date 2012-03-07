@@ -10,7 +10,7 @@
   bakaid: #{@entry.bakaid}
 %pre!= @entry.text
 %p
-  %a{:href => "http://#{configatron.baka.address + configatron.baka.path + @entry.bakaid}"} 本家Permlink
+  %a{:href => "http://#{Settings.baka.address + Settings.baka.path + @entry.bakaid}"} 本家Permlink
 %p
   = pre_entry ? link_to("<< 前", entry_path(pre_entry.bakaid)) : ''
   = link_to("ホーム", root_path)
