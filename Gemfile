@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '~> 3.2.2'
+gem 'rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'settingslogic'
