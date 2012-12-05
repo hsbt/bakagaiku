@@ -9,7 +9,7 @@ class Entry < ActiveRecord::Base
   after_find :parse_bakaid
 
   def text
-    body =~ /<pre>(.*)<\/pre>/m ; $1
+    body =~ /<pre>(.*)<\/pre>/m ? $1 : ""
   end
 
   def title
