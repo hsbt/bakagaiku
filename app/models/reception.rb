@@ -55,11 +55,18 @@ class Reception < ActiveRecord::Base
     response = wget_entry(bakaid)
     return nil unless response.code == "200"
 
+    body = if bakaid > "20121118"
+             response.body
+           else
+             requrie 'nkf'
+             NKF.nkf('-Ew',response.body)
+           end
     if entry = Entry.where(bakaid: bakaid).first
-      entry.update_attibutes!(body: response.body)
+      entry.update_attibutes!(body: body)
     else
-      entry = entries.create!(bakaid: bakaid, body: response.body)
+      entry = entries.create!(bakaid: bakaid, body: body)
     end
+
     entry
   end
 end
