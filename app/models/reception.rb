@@ -55,11 +55,10 @@ class Reception < ActiveRecord::Base
     response = wget_entry(bakaid)
     return nil unless response.code == "200"
 
-    require 'nkf'
     if entry = Entry.where(bakaid: bakaid).first
-      entry.update_attibutes!(body: NKF.nkf('-Ew',response.body))
+      entry.update_attibutes!(body: response.body)
     else
-      entry = entries.create!(bakaid: bakaid, body: NKF.nkf('-Ew', response.body))
+      entry = entries.create!(bakaid: bakaid, body: response.body)
     end
     entry
   end

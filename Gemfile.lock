@@ -77,7 +77,7 @@ GEM
     mime-types (1.19)
     multi_json (1.4.0)
     nested_form (0.3.1)
-    newrelic_rpm (3.5.3.24)
+    newrelic_rpm (3.5.3.25)
     nokogiri (1.5.5)
     pg (0.14.1)
     polyglot (0.3.3)
