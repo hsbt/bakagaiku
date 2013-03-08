@@ -6,7 +6,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'settingslogic'
 gem 'kaminari'
-gem 'rails_admin'
+#gem 'rails_admin'
 
 group :assets do
   gem 'sass-rails'
