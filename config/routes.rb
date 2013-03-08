@@ -1,5 +1,7 @@
 Bakagaiku::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  if defined? RailsAdmin
+    mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  end
 
   root :to => 'entry#index'
 
