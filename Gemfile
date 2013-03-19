@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+ruby '2.0.0'
 
 gem 'rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'settingslogic'
 gem 'kaminari'
-#gem 'rails_admin'
+gem 'rails_admin'
 
 group :assets do
   gem 'sass-rails'
