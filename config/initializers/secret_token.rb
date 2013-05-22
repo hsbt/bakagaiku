@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-# Your secret key for verifying the integrity of signed cookies.
+# Your secret key is used for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
 
 # Make sure the secret is at least 30 characters and all random,
@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Bakagaiku::Application.config.secret_key_base = '65dde8f12d94d850f3ad28dba629868f02823bb4e6b4f5ffe78b197b2b58562205ef0a6e3c7f72f31388f1aa4f938b075ec6d8dc87bcb48a4f00f401a6b3fbc0'
+Bakagaiku::Application.config.secret_key_base = 'a9a79d747e19b968a4946a624b37fe4a7f717d06ebcca2b0d2282b718990984d8b6ffd2b3a38d0914be74ee9014b9ce5ea2b79af2b70048a8f11581a0090f09b'
