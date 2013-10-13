@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'settingslogic'
 gem 'kaminari'
 gem 'rails_12factor'
-# gem 'rails_admin'
+gem 'rails_admin'
 
 gem 'sass-rails'
 gem 'coffee-rails'
