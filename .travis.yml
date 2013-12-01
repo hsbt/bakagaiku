@@ -1,7 +1,10 @@
+rvm: 2.0.0
+
 deploy:
   provider: heroku
   api_key:
     secure: S7yjQ7QjnY8DMp+WPYthozdjfs2Zb6WzTGthlKq7hb/JkSdIarPNuKIkQmebNBlIKItVWMlC23Y8sJM+A0ctkFakRHAm0tY+doWgtwJK6UybewqiB0Arc9SrFPZyhZOhDMgz0CYNxeBxWBOM3wbcCG7DAOaS39fTUZWHcwWUvwk=
   app: bakagaiku
   on:
+    rvm: 2.0.0
     repo: hsbt/bakagaiku
