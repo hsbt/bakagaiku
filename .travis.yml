@@ -1,5 +1,6 @@
 rvm: 2.0.0
-
+before_script: "cp config/database.yml{.sample,}"
+script: "bundle exec rake about"
 deploy:
   provider: heroku
   api_key:
