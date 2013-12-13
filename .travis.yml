@@ -1,11 +1,11 @@
 language: ruby
 rvm: 2.0.0
 cache: bundler
-before_script: "cp config/database.yml{.sample,}"
+before_script: cp config/database.yml{.sample,}
 deploy:
   provider: heroku
   api_key:
-    secure: S7yjQ7QjnY8DMp+WPYthozdjfs2Zb6WzTGthlKq7hb/JkSdIarPNuKIkQmebNBlIKItVWMlC23Y8sJM+A0ctkFakRHAm0tY+doWgtwJK6UybewqiB0Arc9SrFPZyhZOhDMgz0CYNxeBxWBOM3wbcCG7DAOaS39fTUZWHcwWUvwk=
+    secure: oxJi0usGjByNo/8eiWPfcx/El9vAcY/Of52/Qc1kkmv6IOLZoCLp/O5RAlLLIs8VaZYQvuvIcw1MTEbY7qo6DoFaJ+SONKfH4HtQ78uWYyjuCVZ1Tb6asSQ3C0idPUuxlV5XVljA1xmzgwdsGB1GXrtMA1QAKBFp8dn2XPLqzOI=
   app: bakagaiku
   on:
     rvm: 2.0.0
