@@ -1,13 +1,14 @@
 language: ruby
-rvm: 2.0.0
-cache: bundler
+rvm: 2.1.0
+
 before_script: cp config/database.yml{.sample,}
+
 deploy:
   provider: heroku
   api_key:
     secure: oxJi0usGjByNo/8eiWPfcx/El9vAcY/Of52/Qc1kkmv6IOLZoCLp/O5RAlLLIs8VaZYQvuvIcw1MTEbY7qo6DoFaJ+SONKfH4HtQ78uWYyjuCVZ1Tb6asSQ3C0idPUuxlV5XVljA1xmzgwdsGB1GXrtMA1QAKBFp8dn2XPLqzOI=
   app: bakagaiku
   on:
-    rvm: 2.0.0
+    rvm: 2.1.0
     repo: hsbt/bakagaiku
     branch: master
