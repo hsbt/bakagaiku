@@ -3,7 +3,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :reception
 
-  default_scope { order: 'bakaid DESC' }
+  default_scope { order('bakaid DESC') }
 
   attr_reader :year, :month, :day, :number
   after_find :parse_bakaid
