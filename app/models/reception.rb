@@ -1,6 +1,6 @@
 class Reception < ActiveRecord::Base
   has_many :entries
-  default_scope { where(order: 'id DESC') }
+  default_scope { order('id DESC') }
 
   class << self
     def fetch_bakagaiku!(max = Settings.max_fetch_entries)
