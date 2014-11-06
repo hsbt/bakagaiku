@@ -13,7 +13,6 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
-
 group :development do
   gem 'sqlite3'
   gem 'foreman'
