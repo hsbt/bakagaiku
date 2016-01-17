@@ -7,7 +7,6 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'settingslogic'
 gem 'kaminari'
-gem 'rails_12factor'
 gem 'rails_admin'
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -21,5 +20,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
