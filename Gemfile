@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-ruby ENV['CUSTOM_RUBY_VERSION'] || '2.3.3'
+ruby ENV['CUSTOM_RUBY_VERSION'] || '2.3.8'
 
 gem 'rails', '~> 4.1.10'
 gem 'unicorn'
-gem 'haml-rails'
 gem 'jquery-rails'
-gem 'settingslogic'
-gem 'kaminari'
-gem 'rails_admin'
+gem 'haml-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'settingslogic'
+gem 'kaminari'
+gem 'rails_admin'
 
 group :development do
   gem 'sqlite3'
