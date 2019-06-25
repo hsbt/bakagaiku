@@ -11,7 +11,6 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'settingslogic'
 gem 'kaminari'
-gem 'rails_admin'
 
 group :development do
   gem 'sqlite3'
