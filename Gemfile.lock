@@ -194,7 +194,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   pry-rails
-  rails (~> 5.2.0)
+  rails (~> 5.2.4)
   sass-rails
   settingslogic
   sqlite3
