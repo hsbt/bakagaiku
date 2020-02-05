@@ -1,4 +1,4 @@
-Bakagaiku::Application.routes.draw do
+Rails.application.routes.draw do
   root :to => 'entry#index'
 
   resources :entry, :only => [:index, :show] do
