@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby ENV['CUSTOM_RUBY_VERSION'] || '2.6.3'
+ruby ENV['CUSTOM_RUBY_VERSION'] || '2.6.5'
 
-gem 'rails', '~> 4.1.10'
+gem 'rails', '~> 5.2.4'
+gem 'bootsnap'
 gem 'unicorn'
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -20,6 +21,5 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
