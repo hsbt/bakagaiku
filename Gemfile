@@ -4,7 +4,7 @@ ruby ENV['CUSTOM_RUBY_VERSION'] || '2.6.5'
 
 gem 'rails', '~> 5.2.4'
 gem 'bootsnap'
-gem 'unicorn'
+gem 'puma'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'sass-rails'
