@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby ENV['CUSTOM_RUBY_VERSION'] || '2.7.5'
+ruby ENV['CUSTOM_RUBY_VERSION'] || '2.7.6'
 
 gem 'rails', '~> 6.0.2'
 gem 'bootsnap'
